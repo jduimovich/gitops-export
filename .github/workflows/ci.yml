@@ -4,7 +4,7 @@ name:  Export NS on OpenShift
 env:        
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}  
-  OPENSHIFT_NAMESPACE: ${{ secrets.OPENSHIFT_NS}}  
+  OPENSHIFT_NAMESPACE: ${{ secrets.OPENSHIFT_NAMESPACE}}  
 on: [push, workflow_dispatch]
 jobs:
   export-to-gitops:
