@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 oc project
- 
+
 # Identify all objects
 EXCLUSIONS="images|image.openshift.io|events|machineautoscalers.autoscaling.openshift.io|credentialsrequests.cloudcredential.openshift.io|podnetworkconnectivitychecks.controlplane.operator.openshift.io|leases.coordination.k8s.io|machinehealthchecks.machine.openshift.io|machines.machine.openshift.io|machinesets.machine.openshift.io|baremetalhosts.metal3.io|pods.metrics.k8s.io|alertmanagerconfigs.monitoring.coreos.com|alertmanagers.monitoring.coreos.com|podmonitors.monitoring.coreos.com|volumesnapshots.snapshot.storage.k8s.io|profiles.tuned.openshift.io|tuneds.tuned.openshift.io|endpointslice.discovery.k8s.io|ippools.whereabouts.cni.cncf.io|overlappingrangeipreservations.whereabouts.cni.cncf.io|packagemanifests.packages.operators.coreos.com|endpointslice.discovery.k8s.io|endpoints|pods"
 
@@ -67,12 +67,7 @@ bash $SCRIPT_DIR/scrub-secrets.sh $OUTPUT_DIR/secrets
 tar cvf html/export.tar export
 echo 'files can be found in export.tar'
 
-tree $OUTPUT_DIR > tree.txt
-echo 'tree view in html/tree.html'    
-echo  '<!DOCTYPE html>' > html/tree.html
-echo  '<html lang="en"> <title>Export Tree</title><body><pre>' >> html/tree.html
-cat tree.txt  >> html/tree.html
-echo  '</pre></body></html>' >> html/tree.html
+tree $OUTPUT_DIR > tree.txt 
 
 
  

@@ -1,5 +1,4 @@
 #!/bin/bash 
 
-running hack 
-echo $MY_EXPORT_NS
+echo "MY_EXPORT_NS = $MY_EXPORT_NS"
  

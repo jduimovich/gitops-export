@@ -21,10 +21,17 @@ jobs:
           openshift_token: ${{ env.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-      - name: Run as Local Script
+      - name: Install  yq
+        run: |
+          ls -al 
+          export VERSION=v4.2.0  
+          export BINARY=yq_linux_amd64
+          wget -q https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY} -O ./yq
+          chmod +x ./yq
+      - name: Run Hack Script
         run: |  
           bash ./scripts/hack.sh 
-      - name: Run as Local Script
+      - name: Run export-current-ns.sh 
         run: |  
           bash ./scripts/export-current-ns.sh 
       - name: Run as Local Action
