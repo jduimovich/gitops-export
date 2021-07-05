@@ -8,6 +8,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: scripts/hack.sh"
+    - run: ./scripts/hack.sh"
       shell: bash 
  
