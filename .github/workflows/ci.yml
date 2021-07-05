@@ -24,7 +24,7 @@ jobs:
         run: | 
           ls -al
           export MY_EXPORT_NS=${{ env.OPENSHIFT_NAMESPACE }}
-          bash ./scripts/hack.sh
+          bash ./scripts/hack.sh 
       - name: Run as Local Action
         uses: ./   
         with: 
