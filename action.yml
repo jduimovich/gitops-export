@@ -8,6 +8,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: "bash ./scripts/hack.sh"
+    - run: "bash ./scripts/export-current-ns.sh"
       shell: bash 
  

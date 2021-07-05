@@ -1,4 +1,5 @@
 #!/bin/bash 
 
-env
-ls -al  
+running hack 
+echo $MY_EXPORT_NS
+ 

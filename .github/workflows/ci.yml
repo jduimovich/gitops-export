@@ -5,6 +5,7 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}  
   OPENSHIFT_NAMESPACE: ${{ secrets.OPENSHIFT_NAMESPACE}}  
+  MY_EXPORT_NS: ${{ secrets.OPENSHIFT_NAMESPACE}}  
 on: [push, workflow_dispatch]
 jobs:
   export-to-gitops:
@@ -21,10 +22,11 @@ jobs:
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
       - name: Run as Local Script
-        run: | 
-          ls -al
-          export MY_EXPORT_NS=${{ env.OPENSHIFT_NAMESPACE }}
+        run: |  
           bash ./scripts/hack.sh 
+      - name: Run as Local Script
+        run: |  
+          bash ./scripts/export-current-ns.sh 
       - name: Run as Local Action
         uses: ./   
         with: 
