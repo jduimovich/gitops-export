@@ -20,12 +20,13 @@ jobs:
           openshift_token: ${{ env.OPENSHIFT_TOKEN }}
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-      - name: Run as Local Action
-        uses: ./   
-        with: 
-          openshift-namespace:  ${{ env.OPENSHIFT_NAMESPACE }}  
       - name: Run as Local Script
         run: |
           ls -al  
           bash ./scripts/hack.sh
+      - name: Run as Local Action
+        uses: ./   
+        with: 
+          openshift-namespace:  ${{ env.OPENSHIFT_NAMESPACE }}  
+
       
