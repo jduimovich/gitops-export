@@ -1,0 +1,17 @@
+/home/runner/work/gitops-export/gitops-export/export
+├── configmaps
+│   └── openshift-service-ca.crt.yaml
+├── deployments
+│   ├── fib-go-deploy.yaml
+│   ├── fib-node-deploy.yaml
+│   ├── fib-quarkus-deploy.yaml
+│   ├── frontend-deploy.yaml
+│   └── haproxy-deploy.yaml
+├── routes
+│   └── fe.yaml
+└── services
+    ├── fibs-service.yaml
+    ├── frontend-service.yaml
+    └── haproxy-service.yaml
+
+4 directories, 10 files

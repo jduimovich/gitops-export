@@ -1,0 +1,30 @@
+{
+  "apiVersion": "route.openshift.io/v1",
+  "kind": "Route",
+  "metadata": {
+    "annotations": {
+      "openshift.io/host.generated": "true"
+    },
+    "labels": {
+      "app": "haproxy-service"
+    },
+    "name": "fe",
+    "namespace": "gitops-export"
+  },
+  "spec": {
+    "host": "fe-gitops-export.apps.dev-svc-4.8-070514.devcluster.openshift.com",
+    "port": {
+      "targetPort": 8080
+    },
+    "tls": {
+      "insecureEdgeTerminationPolicy": "Redirect",
+      "termination": "edge"
+    },
+    "to": {
+      "kind": "Service",
+      "name": "haproxy-service",
+      "weight": 100
+    },
+    "wildcardPolicy": "None"
+  }
+}

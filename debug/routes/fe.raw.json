@@ -1,0 +1,101 @@
+{
+    "apiVersion": "route.openshift.io/v1",
+    "kind": "Route",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"route.openshift.io/v1\",\"kind\":\"Route\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"haproxy-service\"},\"name\":\"fe\",\"namespace\":\"gitops-export\"},\"spec\":{\"port\":{\"targetPort\":8080},\"tls\":{\"insecureEdgeTerminationPolicy\":\"Redirect\",\"termination\":\"edge\"},\"to\":{\"kind\":\"Service\",\"name\":\"haproxy-service\",\"weight\":100}}}\n",
+            "openshift.io/host.generated": "true"
+        },
+        "creationTimestamp": "2021-07-05T17:55:26Z",
+        "labels": {
+            "app": "haproxy-service"
+        },
+        "managedFields": [
+            {
+                "apiVersion": "route.openshift.io/v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:metadata": {
+                        "f:annotations": {
+                            ".": {},
+                            "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                        },
+                        "f:labels": {
+                            ".": {},
+                            "f:app": {}
+                        }
+                    },
+                    "f:spec": {
+                        "f:port": {
+                            ".": {},
+                            "f:targetPort": {}
+                        },
+                        "f:tls": {
+                            ".": {},
+                            "f:insecureEdgeTerminationPolicy": {},
+                            "f:termination": {}
+                        },
+                        "f:to": {
+                            "f:kind": {},
+                            "f:name": {},
+                            "f:weight": {}
+                        },
+                        "f:wildcardPolicy": {}
+                    }
+                },
+                "manager": "kubectl-client-side-apply",
+                "operation": "Update",
+                "time": "2021-07-05T17:55:26Z"
+            },
+            {
+                "apiVersion": "route.openshift.io/v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:status": {
+                        "f:ingress": {}
+                    }
+                },
+                "manager": "openshift-router",
+                "operation": "Update",
+                "time": "2021-07-05T17:55:26Z"
+            }
+        ],
+        "name": "fe",
+        "namespace": "gitops-export",
+        "resourceVersion": "93028",
+        "uid": "061ebfb8-4589-4492-8b6a-a7c8d384f46f"
+    },
+    "spec": {
+        "host": "fe-gitops-export.apps.dev-svc-4.8-070514.devcluster.openshift.com",
+        "port": {
+            "targetPort": 8080
+        },
+        "tls": {
+            "insecureEdgeTerminationPolicy": "Redirect",
+            "termination": "edge"
+        },
+        "to": {
+            "kind": "Service",
+            "name": "haproxy-service",
+            "weight": 100
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2021-07-05T17:55:26Z",
+                        "status": "True",
+                        "type": "Admitted"
+                    }
+                ],
+                "host": "fe-gitops-export.apps.dev-svc-4.8-070514.devcluster.openshift.com",
+                "routerCanonicalHostname": "router-default.apps.dev-svc-4.8-070514.devcluster.openshift.com",
+                "routerName": "default",
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+}

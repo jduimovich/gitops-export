@@ -1,0 +1,67 @@
+output
+Processing configmaps 1/51
+Processing limitranges 2/51
+Processing persistentvolumeclaims 3/51
+Processing podtemplates 4/51
+Processing replicationcontrollers 5/51
+Processing resourcequotas 6/51
+Processing secrets 7/51
+Processing serviceaccounts 8/51
+Processing services 9/51
+Processing controllerrevisions 10/51
+Processing daemonsets 11/51
+Processing deployments 12/51
+Processing replicasets 13/51
+Processing statefulsets 14/51
+Processing deploymentconfigs 15/51
+Processing rolebindingrestrictions 16/51
+Processing rolebindings 17/51
+Processing roles 18/51
+Processing horizontalpodautoscalers 19/51
+Processing cronjobs 20/51
+Processing jobs 21/51
+Processing buildconfigs 22/51
+Processing builds 23/51
+Processing ingresses 24/51
+Processing dnsrecords 25/51
+configmaps openshift-service-ca.crt
+services fibs-service
+services frontend-service
+services haproxy-service
+replicasets fib-go-deploy-54868699b6
+replicasets fib-node-deploy-67f48cd776
+replicasets fib-quarkus-deploy-5dcdf7d8cf
+deployments fib-go-deploy
+deployments fib-node-deploy
+deployments fib-quarkus-deploy
+deployments frontend-deploy
+deployments haproxy-deploy
+replicasets frontend-deploy-97b9879bb
+replicasets haproxy-deploy-75864988f9
+Processing network-attachment-definitions 26/51
+Processing probes 27/51
+Processing prometheuses 28/51
+Processing prometheusrules 29/51
+Processing servicemonitors 30/51
+Processing thanosrulers 31/51
+Processing egressnetworkpolicies 32/51
+Processing egressrouters 33/51
+Processing operatorpkis 34/51
+Processing ingresses 35/51
+Processing networkpolicies 36/51
+Processing ingresscontrollers 37/51
+Processing catalogsources 38/51
+Processing clusterserviceversions 39/51
+Processing installplans 40/51
+Processing operatorconditions 41/51
+Processing operatorgroups 42/51
+Processing subscriptions 43/51
+Processing poddisruptionbudgets 44/51
+Processing appliedclusterresourcequotas 45/51
+Processing rolebindings 46/51
+Processing roles 47/51
+Processing routes 48/51
+Processing csistoragecapacities 49/51
+Processing templateinstances 50/51
+routes fe
+Processing templates 51/51

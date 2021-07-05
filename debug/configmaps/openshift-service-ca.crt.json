@@ -1,0 +1,14 @@
+{
+  "apiVersion": "v1",
+  "data": {
+    "service-ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDUTCCAjmgAwIBAgIIY06cK42Tm3YwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UE\nAwwrb3BlbnNoaWZ0LXNlcnZpY2Utc2VydmluZy1zaWduZXJAMTYyNTQ5NzE3ODAe\nFw0yMTA3MDUxNDU5MzdaFw0yMzA5MDMxNDU5MzhaMDYxNDAyBgNVBAMMK29wZW5z\naGlmdC1zZXJ2aWNlLXNlcnZpbmctc2lnbmVyQDE2MjU0OTcxNzgwggEiMA0GCSqG\nSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9iuD6Il3OHkKGYWtIFsewv39S8vsdOZ8Q\nzTgCr0cziJGMZRF5Px86ptR3KB+gbYe8/Gwv+7uMgvWDurU1VbKSAXsVi+ZuUl4w\nm/NILVikFkfVGah3dcXnJnHilxBiuR0XQXc9ThpalsWmxL+f4s+9oy6+7Mhn/vUp\nncGJpNY3G4xUJXd6bJKWSDUHVw0mICrbtFdFN3sX1Ff9p9qrr2JAuHXMeNTxpQ6m\n5Ru8oR4i/y7Y+6nBH47oQB0oY6odFGHmxXKamGee39DzqZzGLsqS1xnySuVvvuzr\n4PEbvr88cyDUKDKvAlENdFKYL43kdj+lyKSHkyr8t0ygXj1eXZ9hAgMBAAGjYzBh\nMA4GA1UdDwEB/wQEAwICpDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQXQzbo\nFzd0fDh5Qf/dcwEMVlGdYDAfBgNVHSMEGDAWgBQXQzboFzd0fDh5Qf/dcwEMVlGd\nYDANBgkqhkiG9w0BAQsFAAOCAQEAXWOwZ0BaXEAfOccDi9euhJgH5Furq8D5aN4L\nvztOoGHOaTJ9+zIxyqIqPRrBK+Hn830gfAsMCgUgZMlpGP+rDnBCs2GUA8vHs3cl\n6Q0OnQXo9d96MfQDzlhR/QT+odeUii4Ppe9lUla3nKH6LM9FGwMVup36VJHy+U6a\neUkNi/5IQFZjnGxn20LKlDoHBuI3PLFPhWtwM61tYnTHOZcMhPmAhtV/rQEE06Ng\n+Fkp4H/NZh/blflocxd2MPdWDAMf3KyeaYmoFqMgtPpyYlGPVFi7+Dpo5iVnjejr\nmP+HVz6TY/NvoJeBbTMqJ9YNSunPlPhxhtySiz1cKFwR+08dBQ==\n-----END CERTIFICATE-----\n"
+  },
+  "kind": "ConfigMap",
+  "metadata": {
+    "annotations": {
+      "service.beta.openshift.io/inject-cabundle": "true"
+    },
+    "name": "openshift-service-ca.crt",
+    "namespace": "gitops-export"
+  }
+}
