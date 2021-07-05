@@ -21,8 +21,9 @@ jobs:
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
       - name: Run as Local Script
-        run: |
-          ls -al  
+        run: | 
+          ls -al
+          export MY_EXPORT_NS=${{ env.OPENSHIFT_NAMESPACE }}
           bash ./scripts/hack.sh
       - name: Run as Local Action
         uses: ./   
