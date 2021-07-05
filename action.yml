@@ -1,0 +1,13 @@
+# action.yml
+name: 'Export Namespace'
+description: 'Export a namespace.'
+inputs: 
+  openshift-namespace:  
+    description: 'Namespace'
+    required: true 
+runs:
+  using: "composite"
+  steps:
+    - run: scripts/hack.sh"
+      shell: bash 
+ 
