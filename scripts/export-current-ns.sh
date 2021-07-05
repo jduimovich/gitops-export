@@ -64,10 +64,12 @@ done
 wait  
 bash $SCRIPT_DIR/scrub-secrets.sh $OUTPUT_DIR/secrets
 
-tar cvf html/export.tar export
-echo 'files can be found in export.tar'
-
+tar cvf export.tar export
+echo 'files can be found in export.tar' 
 tree $OUTPUT_DIR > tree.txt 
+du -a export 
+
+
 
 
  
