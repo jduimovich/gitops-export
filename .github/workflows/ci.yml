@@ -25,5 +25,10 @@ jobs:
         uses: ./   
         with: 
           openshift-namespace:  ${{ env.OPENSHIFT_NAMESPACE }}  
+      - name: Create Pull Request to update changes in repo
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'New Gitops Export as Pull Request'
+          commit-message: 'New gitops config' 
 
       

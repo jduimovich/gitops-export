@@ -10,4 +10,3 @@ runs:
   steps:
     - run: "bash ./scripts/export-current-ns.sh"
       shell: bash 
- 
