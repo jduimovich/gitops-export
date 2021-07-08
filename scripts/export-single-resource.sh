@@ -15,7 +15,7 @@ if [ "$OWNER" == "null" ]; then
     # only mkdir if outputting a file 
     mkdir -p $OUTPUT_DIR/$o   
     bash $SCRIPT_DIR/delete-unused-fields.sh $DBG_DIR/$o/$i.raw.json > $DBG_DIR/$o/$i.json
-    cat $DBG_DIR/$o/$i.json | yq eval -P >  $OUTPUT_DIR/$o/$i.yaml 
+    cat $DBG_DIR/$o/$i.json |  $SCRIPT_DIR/yq eval -P >  $OUTPUT_DIR/$o/$i.yaml 
 else   
       KIND=$(jq ".metadata.ownerReferences[0].kind" $DBG_DIR/$o/$i.raw.json)
       NAME=$(jq ".metadata.ownerReferences[0].name" $DBG_DIR/$o/$i.raw.json)
