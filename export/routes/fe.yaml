@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    app: haproxy-service
+  name: fe
+  namespace: jduimovich-dev
+spec:
+  host: fe-jduimovich-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com
+  port:
+    targetPort: 8080
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: haproxy-service
+    weight: 100
+  wildcardPolicy: None

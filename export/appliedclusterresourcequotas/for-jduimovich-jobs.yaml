@@ -1,0 +1,23 @@
+apiVersion: quota.openshift.io/v1
+kind: AppliedClusterResourceQuota
+metadata:
+  annotations:
+    toolchain.dev.openshift.com/last-applied-configuration: '{"apiVersion":"quota.openshift.io/v1","kind":"ClusterResourceQuota","metadata":{"labels":{"toolchain.dev.openshift.com/owner":"jduimovich","toolchain.dev.openshift.com/provider":"codeready-toolchain","toolchain.dev.openshift.com/templateref":"base-clusterresources-b0a2319","toolchain.dev.openshift.com/tier":"base","toolchain.dev.openshift.com/type":"clusterresources"},"name":"for-jduimovich-jobs"},"spec":{"quota":{"hard":{"count/cronjobs.batch":"30","count/daemonsets.apps":"30","count/jobs.batch":"30","count/statefulsets.apps":"30"}},"selector":{"annotations":{"openshift.io/requester":"jduimovich"},"labels":null}}}'
+  labels:
+    toolchain.dev.openshift.com/owner: jduimovich
+    toolchain.dev.openshift.com/provider: codeready-toolchain
+    toolchain.dev.openshift.com/templateref: base-clusterresources-b0a2319
+    toolchain.dev.openshift.com/tier: base
+    toolchain.dev.openshift.com/type: clusterresources
+  name: for-jduimovich-jobs
+spec:
+  quota:
+    hard:
+      count/cronjobs.batch: "30"
+      count/daemonsets.apps: "30"
+      count/jobs.batch: "30"
+      count/statefulsets.apps: "30"
+  selector:
+    annotations:
+      openshift.io/requester: jduimovich
+    labels: null

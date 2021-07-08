@@ -1,0 +1,22 @@
+apiVersion: quota.openshift.io/v1
+kind: AppliedClusterResourceQuota
+metadata:
+  annotations:
+    toolchain.dev.openshift.com/last-applied-configuration: '{"apiVersion":"quota.openshift.io/v1","kind":"ClusterResourceQuota","metadata":{"labels":{"toolchain.dev.openshift.com/owner":"jduimovich","toolchain.dev.openshift.com/provider":"codeready-toolchain","toolchain.dev.openshift.com/templateref":"base-clusterresources-b0a2319","toolchain.dev.openshift.com/tier":"base","toolchain.dev.openshift.com/type":"clusterresources"},"name":"for-jduimovich-rhoas"},"spec":{"quota":{"hard":{"count/cloudserviceaccountrequest.rhoas.redhat.com":"2","count/cloudservicesrequests.rhoas.redhat.com":"2","count/kafkaconnections.rhoas.redhat.com":"5"}},"selector":{"annotations":{"openshift.io/requester":"jduimovich"},"labels":null}}}'
+  labels:
+    toolchain.dev.openshift.com/owner: jduimovich
+    toolchain.dev.openshift.com/provider: codeready-toolchain
+    toolchain.dev.openshift.com/templateref: base-clusterresources-b0a2319
+    toolchain.dev.openshift.com/tier: base
+    toolchain.dev.openshift.com/type: clusterresources
+  name: for-jduimovich-rhoas
+spec:
+  quota:
+    hard:
+      count/cloudserviceaccountrequest.rhoas.redhat.com: "2"
+      count/cloudservicesrequests.rhoas.redhat.com: "2"
+      count/kafkaconnections.rhoas.redhat.com: "5"
+  selector:
+    annotations:
+      openshift.io/requester: jduimovich
+    labels: null

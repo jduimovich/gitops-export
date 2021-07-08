@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/fib-node-deploy: runtime/default
+  labels:
+    app: fib
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/instance: fib-service-in-node
+    app.kubernetes.io/name: fib-node-deploy
+    app.kubernetes.io/part-of: fib-service
+    app.openshift.io/runtime: nodejs
+  name: fib-node-deploy
+  namespace: jduimovich-dev
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: fib
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: fib
+    spec:
+      containers:
+        - image: docker.io/jduimovich/fib-node:8e35314
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 2
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: fib-node-deploy
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 8080
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 200m
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            capabilities:
+              drop:
+                - all
+            readOnlyRootFilesystem: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: true
+      terminationGracePeriodSeconds: 30
