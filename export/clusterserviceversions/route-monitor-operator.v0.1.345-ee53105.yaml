@@ -1,0 +1,269 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[]'
+    capabilities: Basic Install
+    olm.operatorGroup: route-monitor-operator
+    olm.operatorNamespace: openshift-route-monitor-operator
+    operatorframework.io/properties: '{}'
+    operators.operatorframework.io/builder: operator-sdk-v1.2.0
+    operators.operatorframework.io/project_layout: go.kubebuilder.io/v2
+  labels:
+    olm.api.924033bb93ea26e4: provided
+    olm.api.c0ed25105efc828c: provided
+    olm.copiedFrom: openshift-route-monitor-operator
+  name: route-monitor-operator.v0.1.345-ee53105
+  namespace: jduimovich-dev
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions:
+    owned:
+      - description: ClusterUrlMonitor is the Schema for the clusterurlmonitors API
+        displayName: Cluster Url Monitor
+        kind: ClusterUrlMonitor
+        name: clusterurlmonitors.monitoring.openshift.io
+        version: v1alpha1
+      - description: RouteMonitor is the Schema for the routemonitors API
+        displayName: Route Monitor
+        kind: RouteMonitor
+        name: routemonitors.monitoring.openshift.io
+        version: v1alpha1
+  description: Automatically enables blackbox probes for routes on OpenShift clusters to be consumed by the Cluster Monitoring Operator or any vanilla Prometheus Operator
+  displayName: Route Monitor Operator
+  icon:
+    - base64data: ""
+      mediatype: ""
+  install:
+    spec:
+      clusterPermissions:
+        - rules:
+            - apiGroups:
+                - '*'
+              resources:
+                - services
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - apps
+              resources:
+                - deployments
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - config.openshift.io
+              resources:
+                - clusterversions
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - config.openshift.io
+              resources:
+                - dnses
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - monitoring.coreos.com
+              resources:
+                - prometheusrules
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - monitoring.coreos.com
+              resources:
+                - servicemonitors
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - update
+                - watch
+            - apiGroups:
+                - monitoring.openshift.io
+              resources:
+                - clusterurlmonitors
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - monitoring.openshift.io
+              resources:
+                - clusterurlmonitors/status
+              verbs:
+                - get
+                - patch
+                - update
+            - apiGroups:
+                - monitoring.openshift.io
+              resources:
+                - routemonitors
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - monitoring.openshift.io
+              resources:
+                - routemonitors/status
+              verbs:
+                - get
+                - patch
+                - update
+            - apiGroups:
+                - route.openshift.io
+              resources:
+                - routes
+              verbs:
+                - get
+                - list
+                - watch
+          serviceAccountName: route-monitor-operator-system
+      deployments:
+        - name: route-monitor-operator-controller-manager
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: route-monitor-operator
+                component: operator
+                control-plane: controller-manager
+            strategy: {}
+            template:
+              metadata:
+                creationTimestamp: null
+                labels:
+                  app: route-monitor-operator
+                  component: operator
+                  control-plane: controller-manager
+              spec:
+                affinity:
+                  nodeAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                      - preference:
+                          matchExpressions:
+                            - key: node-role.kubernetes.io/infra
+                              operator: Exists
+                        weight: 1
+                containers:
+                  - args:
+                      - --metrics-addr=127.0.0.1:8080
+                      - --enable-leader-election
+                      - --zap-log-level=$(LOG_LEVEL)
+                      - --blackbox-image=$(BLACKBOX_IMAGE)
+                      - --blackbox-namespace=$(BLACKBOX_NAMESPACE)
+                    command:
+                      - /manager
+                    env:
+                      - name: LOG_LEVEL
+                        value: "1"
+                      - name: BLACKBOX_IMAGE
+                        value: quay.io/app-sre/prom-blackbox-exporter:master
+                      - name: BLACKBOX_NAMESPACE
+                        valueFrom:
+                          fieldRef:
+                            fieldPath: metadata.namespace
+                    image: quay.io/app-sre/route-monitor-operator@sha256:2f0d9a39259b308a8052ac990ce2261ca0692f5b4fb15de2296613eff2829bcb
+                    name: manager
+                    resources:
+                      limits:
+                        cpu: 100m
+                        memory: 300Mi
+                      requests:
+                        cpu: 100m
+                        memory: 20Mi
+                serviceAccountName: route-monitor-operator-system
+                terminationGracePeriodSeconds: 10
+                tolerations:
+                  - effect: NoSchedule
+                    key: node-role.kubernetes.io/infra
+                    operator: Exists
+      permissions:
+        - rules:
+            - apiGroups:
+                - ""
+              resources:
+                - configmaps
+              verbs:
+                - get
+                - list
+                - watch
+                - create
+                - update
+                - patch
+                - delete
+            - apiGroups:
+                - ""
+              resources:
+                - configmaps/status
+              verbs:
+                - get
+                - update
+                - patch
+            - apiGroups:
+                - ""
+              resources:
+                - events
+              verbs:
+                - create
+                - patch
+          serviceAccountName: route-monitor-operator-system
+    strategy: deployment
+  installModes:
+    - supported: false
+      type: OwnNamespace
+    - supported: false
+      type: SingleNamespace
+    - supported: false
+      type: MultiNamespace
+    - supported: true
+      type: AllNamespaces
+  keywords:
+    - operator-sdk
+    - golang
+    - monitoring
+    - sre
+    - openshift-dedicated
+    - openshift
+    - redhat
+  links:
+    - name: Route Monitor Operator
+      url: https://github.com/openshift/route-monitor-operator/
+  maintainers:
+    - email: rrackow@redhat.com
+      name: RiRa12621
+    - email: 11993626+georgettica@users.noreply.github.com
+      name: georgettica
+  maturity: alpha
+  provider:
+    name: Red Hat
+    url: https://www.redhat.com
+  replaces: route-monitor-operator.v0.1.331-e2c7b17
+  version: 0.1.345-ee53105
