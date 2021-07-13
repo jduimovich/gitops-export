@@ -25,8 +25,8 @@ if [ "$RESOURCES" == "" ]; then
 RESOURCES=`kubectl api-resources --verbs=list --namespaced -o name | egrep -v $EXCLUSIONS | awk -F. '{print $1}'`         
 fi
 
-DBG_DIR=$(pwd)/debug
-OUTPUT_DIR=$(pwd)/export
+DBG_DIR=debug
+OUTPUT_DIR=export
 rm -rf $OUTPUT_DIR
 mkdir -p $OUTPUT_DIR
 rm -rf $DBG_DIR
@@ -67,11 +67,7 @@ for o in $RESOURCES; do
 done  
 wait  
 bash $SCRIPT_DIR/scrub-secrets.sh $OUTPUT_DIR/secrets
-
-tar cvf export.tar export
-echo 'files can be found in export.tar' 
-tree $OUTPUT_DIR > tree.txt 
-du -a export 
+ 
 
 
 

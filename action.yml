@@ -7,6 +7,6 @@ inputs:
     required: true 
 runs:
   using: "composite"
-  steps:
-    - run: "bash ./scripts/export-current-ns.sh"
+  steps: 
+    - run: "curl https://raw.githubusercontent.com/jduimovich/gitops-export/main/scripts/boot.sh | bash"
       shell: bash 
