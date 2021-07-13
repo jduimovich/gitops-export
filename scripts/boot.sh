@@ -10,6 +10,12 @@ curl https://raw.githubusercontent.com/jduimovich/gitops-export/main/scripts/scr
 chmod +x *.sh
 
 bash export-current-ns.sh
+
+echo "Done Exporting "
+echo $(pwd)
+ls -al 
+tree .
+
 mv export ../export
 cd ..
 rm -rf _export 
