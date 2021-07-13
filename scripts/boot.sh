@@ -20,13 +20,13 @@ echo "Up one  "
 ls -al .. 
 tree .. 
 
+rm -rf ../export 
 mv export ../export
 
 echo "move export  "
 ls -al .. 
 tree .. 
-
-
+ 
 cd .. 
 rm -rf _export 
 rm kubeconfig.yaml 
