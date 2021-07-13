@@ -16,9 +16,24 @@ echo $(pwd)
 ls -al 
 tree .
 
+echo "Up one  "
+ls -al .. 
+tree .. 
+
 mv export ../export
-cd ..
+
+echo "move export  "
+ls -al .. 
+tree .. 
+
+
+cd .. 
 rm -rf _export 
 rm kubeconfig.yaml 
+
+echo "cleaned _export"
+echo $(pwd)
+ls -al 
+tree .
 
  
